@@ -43,8 +43,8 @@ if not Encryp.get("Usr"):
 
 
 while True:
-    User_Check = input("Enter your UserName (0 to reset): ")
-    Pass_Check = input("Enter your Password (0 to reset): ")
+    User_Check = input("Enter your UserName : ")
+    Pass_Check = input("Enter your Password : ")
 
     #  RESET OPTION
     if User_Check == "0" and Pass_Check == "0":
