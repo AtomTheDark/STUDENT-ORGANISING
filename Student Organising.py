@@ -3,7 +3,8 @@ import builtins       # Checking for functions
 import string         # Checking for symbols
 import abc            # For abstract classes
 import json           # For password management
-
+import pathlib        # For password management too 
+file_path = pathlib.Path("Encryp.json")
 
 class Organisation(abc.ABC):
     schl = "SCHOOL"
@@ -42,16 +43,25 @@ if not Encryp.get("Usr"):
 
 
 while True:
-    User_Check = input("Enter your UserName: ")
-    Pass_Check = input("Enter your Password: ")
+    User_Check = input("Enter your UserName (0 to reset): ")
+    Pass_Check = input("Enter your Password (0 to reset): ")
 
+    #  RESET OPTION
+    if User_Check == "0" and Pass_Check == "0":
+        if file_path.exists():
+            file_path.unlink()
+            print("Login data deleted. Program will exit.")
+        else:
+            print("No login file found.")
+        exit()
+
+    #  NORMAL LOGIN
     if User_Check == Encryp.get("Usr") and Pass_Check == Encryp.get("Pas"):
         break
     else:
         print("Incorrect Password")
         print("== Try Again ==")
-
-
+        
 # ---------- ORGANISATION ----------
 
 Organisation.schl = input("Enter your Organisation: ")
